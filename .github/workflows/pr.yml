@@ -1,0 +1,92 @@
+name: Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  # basic validations
+
+  validate-ticket-tracked:
+    name: Validate ticket tracked
+    uses: finch-api/github-actions-workflows/.github/workflows/valid-ticket-tracked.yml@main
+    with:
+      GH_EVENT_NUMBER: ${{ github.event.number }}
+      REPO_NAME: ${{ github.repository }}
+    secrets:
+      GHA_TOKEN: ${{ secrets.GH_READONLY_REPOS_AND_PACKAGES_PAT }}
+
+  validate-pr-title-standard:
+    name: Validate PR title is to standard
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Validate PR title using semantic-pull-request
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_READONLY_REPOS_AND_PACKAGES_PAT }}
+        with:
+          wip: true
+          types: |
+            build
+            chore
+            ci
+            docs
+            feat
+            fix
+            infra
+            perf
+            refactor
+            revert
+            style
+            test
+
+  # checks
+
+  lint:
+    name: Lint
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    needs:
+      - validate-ticket-tracked
+      - validate-pr-title-standard
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Configure node
+        uses: useblacksmith/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run lint
+        run: npm run lint
+
+  run-tests:
+    name: Unit test
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    needs:
+      - validate-ticket-tracked
+      - validate-pr-title-standard
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Configure node
+        uses: useblacksmith/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
