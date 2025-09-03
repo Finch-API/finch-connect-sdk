@@ -1,31 +1,62 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
   extends: [
-    'eslint:recommended',
-    '@typescript-eslint/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
     'prettier',
+    'plugin:@typescript-eslint/recommended',
   ],
-  plugins: ['@typescript-eslint', 'prettier'],
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  parser: '@typescript-eslint/parser',
+  plugins: ['prettier', '@typescript-eslint'],
   env: {
     browser: true,
+    commonjs: true,
     es6: true,
+    jest: true,
     node: true,
   },
-  rules: {
-    'prettier/prettier': 'error',
-    '@typescript-eslint/no-explicit-any': 'warn',
-    '@typescript-eslint/no-unused-vars': 'error',
+  parserOptions: {
+    sourceType: 'module',
   },
   settings: {
-    react: {
-      version: 'detect',
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     },
+  },
+  rules: {
+    'jsx-a11y/href-no-hash': ['off'],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'no-underscore-dangle': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'max-len': [
+      'warn',
+      {
+        code: 100,
+        tabWidth: 2,
+        comments: 100,
+        ignoreComments: false,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
+    'no-console': 'off',
   },
 };

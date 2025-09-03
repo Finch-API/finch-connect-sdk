@@ -10,7 +10,9 @@ export const useFinchConnect = (
   initializeArgs: ConnectInitializeArgs
 ): { open: OpenFn; openPreview: OpenPreviewFn } => {
   const isHookMounted = useRef(false);
-  const coreRef = useRef<ReturnType<typeof createFinchConnectCore> | null>(null);
+  const coreRef = useRef<ReturnType<typeof createFinchConnectCore> | null>(
+    null
+  );
 
   useEffect(() => {
     if (!isHookMounted.current) {
