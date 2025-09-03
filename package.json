@@ -1,0 +1,76 @@
+{
+  "name": "@tryfinch/connect",
+  "version": "5.0.0",
+  "description": "Unified Finch Connect SDK for vanilla JavaScript and React applications",
+  "keywords": [
+    "finch",
+    "sdk",
+    "payroll",
+    "react",
+    "javascript",
+    "oauth",
+    "spa"
+  ],
+  "homepage": "https://tryfinch.com/",
+  "author": "Finch",
+  "license": "MIT",
+  "repository": "Finch-API/finch-connect-sdk",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index-with-react.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.es.js",
+      "types": "./dist/index-with-react.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react.es.js",
+      "types": "./dist/react.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.0",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "prettier": "^3.0.0",
+    "react": "^16.9.0",
+    "rollup": "^4.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "ts-jest": "^29.0.0",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.0"
+  }
+}

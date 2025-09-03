@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <script src="finch-connect.js"></script>
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      .row {
+        margin-bottom: 15px;
+      }
+      .top-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type='text'] {
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      input[type='checkbox'] {
+        margin-right: 8px;
+      }
+      .cta {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .cta:hover {
+        background-color: #0056b3;
+      }
+      .results {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Finch Connect JS Example App</h2>
+      <form class="actions" id="connect-form">
+        <div class="row">
+          <label class="top-label">Session UUID:</label>
+          <input
+            type="text"
+            id="session-id"
+            placeholder="Enter session UUID"
+            required
+          />
+        </div>
+        <div class="row">
+          <label class="top-label">Include State:</label>
+          <input type="checkbox" id="include-state" />
+        </div>
+        <div class="row">
+          <button class="cta" type="submit">Open Finch Connect</button>
+        </div>
+      </form>
+      <div class="results">
+        <p>
+          Complete a Finch Connect session and the success event will be
+          displayed here
+        </p>
+        <div id="result-display" style="display: none"></div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById('connect-form');
+      const sessionIdInput = document.getElementById('session-id');
+      const includeStateCheckbox = document.getElementById('include-state');
+      const resultDisplay = document.getElementById('result-display');
+
+      const connect = FinchConnect.initialize({
+        onSuccess: ({ code }) => {
+          console.log(`Success with code: ${code}`);
+          resultDisplay.innerHTML = `<strong>Success:</strong> ${code}`;
+          resultDisplay.style.display = 'block';
+        },
+        onError: ({ errorMessage }) => {
+          console.log(`Error: ${errorMessage}`);
+          resultDisplay.innerHTML = `<strong>Error:</strong> ${errorMessage}`;
+          resultDisplay.style.display = 'block';
+        },
+        onClose: () => {
+          console.log('Closed');
+        },
+        apiConfig: {
+          connectUrl: 'http://localhost:3000'
+        }
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const sessionId = sessionIdInput.value.trim();
+        if (!sessionId) {
+          alert('Please enter a session UUID');
+          return;
+        }
+
+        const openOptions = {
+          // Generate a session ID using the /connect/sessions endpoint on the Finch API
+          // See the docs here https://developer.tryfinch.com/api-reference/connect/new-session#create-a-new-connect-session
+          sessionId,
+          // An optional state parameter can be passed
+          // https://datatracker.ietf.org/doc/html/rfc6749#section-10.12
+          ...(includeStateCheckbox.checked
+            ? { state: new Date().toISOString() }
+            : {}),
+          // An optional value for the z-index of the Finch Connect iframe
+          // Defaults to 999 if not provided
+          // zIndex: 998,
+        };
+
+        connect.open(openOptions);
+      });
+    </script>
+  </body>
+</html>
