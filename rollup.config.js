@@ -22,11 +22,16 @@ module.exports = [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: false,
-        exclude: ['**/*.test.ts', '**/*.test.tsx', 'src/react.ts', 'src/setupTests.ts'],
+        exclude: [
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          'src/react.ts',
+          'src/setupTests.ts',
+        ],
       }),
       replace({
         preventAssignment: true,
-        'SDK_VERSION': `unified-${packageJson.version}`,
+        SDK_VERSION: `unified-${packageJson.version}`,
       }),
     ],
   },
@@ -44,11 +49,11 @@ module.exports = [
         tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: 'dist',
-        exclude: ['**/*.test.ts', '**/*.test.tsx', 'src/setupTests.ts', 'src/umd.ts'],
+        exclude: ['**/*.test.ts', '**/*.test.tsx', 'src/setupTests.ts'],
       }),
       replace({
         preventAssignment: true,
-        'SDK_VERSION': `unified-${packageJson.version}`,
+        SDK_VERSION: `unified-${packageJson.version}`,
       }),
     ],
   },
@@ -70,7 +75,7 @@ module.exports = [
       }),
       replace({
         preventAssignment: true,
-        'SDK_VERSION': `unified-${packageJson.version}`,
+        SDK_VERSION: `unified-${packageJson.version}`,
       }),
     ],
   },

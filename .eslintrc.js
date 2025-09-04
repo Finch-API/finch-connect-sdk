@@ -14,6 +14,7 @@ module.exports = {
     jest: true,
     node: true,
   },
+  ignorePatterns: ['rollup.config.js'],
   parserOptions: {
     sourceType: 'module',
   },
