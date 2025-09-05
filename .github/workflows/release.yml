@@ -75,6 +75,7 @@ jobs:
     needs:
       - build
 
+    steps:
       - name: Update package version
         run: npm version --no-git-tag-version ${{ github.ref_name }}
 
