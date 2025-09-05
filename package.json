@@ -1,15 +1,13 @@
 {
-  "name": "@tryfinch/connect",
+  "name": "@tryfinch/react-connect",
   "version": "5.0.0",
-  "description": "Unified Finch Connect SDK for vanilla JavaScript and React applications",
+  "description": "The SDK for Finch's authorization flow, Finch Connect",
   "keywords": [
     "finch",
     "sdk",
     "payroll",
     "react",
-    "javascript",
-    "oauth",
-    "spa"
+    "oauth"
   ],
   "homepage": "https://tryfinch.com/",
   "author": "Finch",
@@ -46,7 +44,7 @@
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "react": ">=16.9.0"
   },
   "peerDependenciesMeta": {
     "react": {
