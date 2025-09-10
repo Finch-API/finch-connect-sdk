@@ -1,4 +1,9 @@
-import { ConnectInitializeArgs, ConnectLaunchArgs, ConnectPreviewLaunchArgs, FinchConnectInterface } from './types';
+import {
+  ConnectInitializeArgs,
+  ConnectLaunchArgs,
+  ConnectPreviewLaunchArgs,
+  FinchConnectInterface,
+} from './types';
 import { createFinchConnectCore } from './core';
 
 export * from './types';

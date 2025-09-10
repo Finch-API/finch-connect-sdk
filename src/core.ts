@@ -1,9 +1,9 @@
-import { 
-  ConnectInitializeArgs, 
-  ConnectLaunchArgs, 
+import {
+  ConnectInitializeArgs,
+  ConnectLaunchArgs,
   ConnectPreviewLaunchArgs,
   FinchConnectInterface,
-  FinchConnectPostMessage 
+  FinchConnectPostMessage,
 } from './types';
 import { constructAuthUrl, constructPreviewUrl } from './utils';
 
@@ -35,10 +35,10 @@ export const createAndAttachIFrame = ({
   iframe.style.backgroundColor = 'none transparent';
   iframe.style.border = 'none';
   iframe.allow = 'clipboard-write; clipboard-read';
-  
+
   document.body.prepend(iframe);
   document.body.style.overflow = 'hidden';
-  
+
   return iframe;
 };
 
@@ -54,13 +54,15 @@ export const createMessageHandler = (
   callbacks: ConnectInitializeArgs,
   closeFn: () => void
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (event: MessageEvent<any>) => {
     const typedEvent = event as FinchConnectPostMessage;
-    
+
     if (!typedEvent.data) return;
     if (typedEvent.data.name !== POST_MESSAGE_NAME) return;
-    
-    const CONNECT_URL = callbacks.apiConfig?.connectUrl || BASE_FINCH_CONNECT_URI;
+
+    const CONNECT_URL =
+      callbacks.apiConfig?.connectUrl || BASE_FINCH_CONNECT_URI;
     if (!typedEvent.origin.startsWith(CONNECT_URL)) return;
 
     if (typedEvent.data.kind !== 'error') closeFn();
@@ -108,7 +110,7 @@ export const createFinchConnectCore = (
       state: args.state,
       apiConfig: callbacks.apiConfig,
     });
-    
+
     createAndAttachIFrame({
       src: url,
       zIndex: args.zIndex,
@@ -121,7 +123,7 @@ export const createFinchConnectCore = (
       products: args.products,
       apiConfig: callbacks.apiConfig,
     });
-    
+
     createAndAttachIFrame({
       src: url,
     });

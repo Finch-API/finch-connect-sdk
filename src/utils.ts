@@ -22,7 +22,7 @@ export const constructAuthUrl = ({
   const authUrl = new URL(`${CONNECT_URL}/authorize`);
   authUrl.searchParams.append('session', sessionId);
   if (state) authUrl.searchParams.append('state', state);
-  
+
   appendBaseParams(authUrl);
   return authUrl.href;
 };
@@ -44,7 +44,7 @@ export const constructPreviewUrl = ({
   previewUrl.searchParams.append('client_id', clientId);
   previewUrl.searchParams.append('products', products.join(' '));
   previewUrl.searchParams.append('redirect_uri', 'https://www.tryfinch.com');
-  
+
   appendBaseParams(previewUrl);
   return previewUrl.href;
 };

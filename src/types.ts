@@ -43,8 +43,8 @@ export type FinchConnectInterface = {
   destroy: () => void;
 };
 
-export type FinchConnectAuthMessage = { 
-  name: 'finch-auth-message-v2' 
+export type FinchConnectAuthMessage = {
+  name: 'finch-auth-message-v2';
 } & (
   | {
       kind: 'closed';
