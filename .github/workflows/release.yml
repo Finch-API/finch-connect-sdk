@@ -77,6 +77,9 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure node
         uses: useblacksmith/setup-node@v5
@@ -98,6 +101,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout main
           git add package.json package-lock.json
           git commit -m "chore: update package version to ${{ github.ref_name }}"
           git push origin main
