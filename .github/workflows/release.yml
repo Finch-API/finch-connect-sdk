@@ -77,6 +77,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Configure node
         uses: useblacksmith/setup-node@v5
