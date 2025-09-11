@@ -1,0 +1,120 @@
+name: Build and Release
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: write
+
+env:
+  APP: finch-connect-sdk
+  AWS_ACCOUNT_ID: 522364040868
+  ENV_SHORT: prod
+  ENVIRONMENT: production
+  CDN_BUCKET: finch-cdn
+  CDN_ID: E1U0LEJ7OSX8MO
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Configure node
+        uses: useblacksmith/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test
+
+  lint:
+    name: Lint
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Configure node
+        uses: useblacksmith/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+  build-and-publish:
+    name: Build and Publish
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    needs:
+      - tests
+      - lint
+
+    steps:
+      - name: Install AWS CLI
+        uses: unfor19/install-aws-cli-action@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/github-actions/gha-${{ env.APP }}
+          role-session-name: gha-${{ env.APP }}
+          aws-region: us-west-2
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Configure node
+        uses: useblacksmith/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Update package version
+        run: npm version --no-git-tag-version --allow-same-version ${{ github.ref_name }}
+
+      - name: Commit version bump to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: update package version to ${{ github.ref_name }}"
+          git push origin main
+
+      - name: Publish React package to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish JS artifact to S3
+        run: |
+          mkdir to_s3
+          cd to_s3
+          cp ../dist/index.js connect.js
+          cat connect.js | md5 > connect.js.md5
+          aws s3 sync . s3://${{ env.CDN_BUCKET }}/${GITHUB_REF_NAME}/
+          aws s3 sync . s3://${{ env.CDN_BUCKET }}/latest/
+  
+      - name: Invalidate S3 Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ env.CDN_ID }} --paths "/latest/connect.js" "/latest/connect.js.md5"
