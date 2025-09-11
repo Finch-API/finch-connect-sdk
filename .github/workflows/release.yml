@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  APP: finch-connect-js
+  APP: finch-connect-sdk
   AWS_ACCOUNT_ID: 522364040868
   ENV_SHORT: prod
   ENVIRONMENT: production
