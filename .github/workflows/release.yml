@@ -6,7 +6,8 @@ on:
       - published
 
 permissions:
-  contents: write
+  contents: read # This is required for called workflows to be able to checkout the code
+  id-token: write # This is required for requesting the JWT to authenticate with AWS
 
 env:
   APP: finch-connect-sdk
