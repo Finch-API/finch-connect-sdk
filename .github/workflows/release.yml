@@ -79,6 +79,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          token: ${{ secrets.REPO_PAT_WRITE }}
 
       - name: Configure node
         uses: useblacksmith/setup-node@v5
