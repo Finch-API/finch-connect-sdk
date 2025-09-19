@@ -117,7 +117,7 @@ jobs:
           mkdir to_s3
           cd to_s3
           cp ../dist/index.js connect.js
-          cat connect.js | md5 > connect.js.md5
+          md5sum connect.js > connect.js.md5
           aws s3 sync . s3://${{ env.CDN_BUCKET }}/${GITHUB_REF_NAME}/
           aws s3 sync . s3://${{ env.CDN_BUCKET }}/latest/
 
