@@ -6,7 +6,7 @@ on:
       - published
 
 permissions:
-  contents: read # This is required for called workflows to be able to checkout the code
+  contents: write # This is required for called workflows to be able to checkout the code
   id-token: write # This is required for requesting the JWT to authenticate with AWS
 
 env:
@@ -117,7 +117,7 @@ jobs:
           cat connect.js | md5 > connect.js.md5
           aws s3 sync . s3://${{ env.CDN_BUCKET }}/${GITHUB_REF_NAME}/
           aws s3 sync . s3://${{ env.CDN_BUCKET }}/latest/
-  
+
       - name: Invalidate S3 Cache
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ env.CDN_ID }} --paths "/latest/connect.js" "/latest/connect.js.md5"
