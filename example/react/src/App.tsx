@@ -19,10 +19,7 @@ const App = () => {
   const { open } = useFinchConnect({
     onSuccess,
     onError,
-    onClose,
-    apiConfig: {
-      connectUrl: 'http://localhost:3000'
-    }
+    onClose
   });
 
   // Call the open method when submitting the form
