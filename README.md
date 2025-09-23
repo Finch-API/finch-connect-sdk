@@ -135,3 +135,7 @@ const App = () => {
   </body>
 </html>
 ```
+
+## Contributing
+
+Pull requests in this repo are not routinely reviewed, do not submit pull requests if you are having issues with Finch Connect. Instead please reach out to our support team at developers@tryfinch.com.
