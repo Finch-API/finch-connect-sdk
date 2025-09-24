@@ -2,16 +2,16 @@
 
 [![NPM](https://img.shields.io/npm/v/@tryfinch/react-connect)](https://www.npmjs.com/package/@tryfinch/react-connect)
 
-The SDK for [Finch's](https://www.tryfinch.com/) authorization flow, Finch Connect
+The SDK for [Finch's](https://developer.tryfinch.com/how-finch-works/quickstart) authorization flow, Finch Connect
 
 ## Installation
 
 ### React
 
-Available on npm at `@tryfinch/react-connect`:
+Available on [npm](https://www.npmjs.com/package/@tryfinch/react-connect):
 
 ```bash
-npm install @tryfinch/connect
+npm install @tryfinch/react-connect
 ```
 
 ### JavaScript
@@ -22,7 +22,17 @@ Available via CDN:
 <script src="https://prod-cdn.tryfinch.com/latest/connect.js"></script>
 ```
 
+Pin to a specific version (see [npm](https://www.npmjs.com/package/@tryfinch/react-connect) for available versions):
+
+```html
+<script src="https://prod-cdn.tryfinch.com/vX.Y.Z/connect.js"></script>
+```
+
 ## Usage
+
+See the documentation on setting up Finch Connect [here](https://developer.tryfinch.com/implementation-guide/Connect/Create-Account)
+
+Example apps are available in the `example` directory of this repo. See their READMEs for how to run them.
 
 ### React
 
@@ -125,3 +135,7 @@ const App = () => {
   </body>
 </html>
 ```
+
+## Contributing
+
+Pull requests in this repo are not routinely reviewed, do not submit pull requests if you are having issues with Finch Connect. Instead please reach out to our support team at developers@tryfinch.com.
