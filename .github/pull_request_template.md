@@ -1,4 +1,6 @@
-> Pull requests in this repo are not routinely reviewed, do not submit pull requests if you are having issues with Finch Connect. Instead please reach out to our support team at developers@tryfinch.com.
+> **Attention external contributors!**
+>
+> Pull requests in this repo are not routinely reviewed. Do not submit pull requests if you are having issues with Finch Connect. Instead please reach out to our support team at developers@tryfinch.com.
 
 ## What is changing?
 
@@ -12,8 +14,20 @@
 
 > What is the reason behind these changes? What problems do they solve, or what features do they add?
 
+## Relevant resources
+
+> Please link to any related issues, pull requests, etc. that offer context to this change
+
 ## What steps did you take to test this?
 
 > Please detail the steps you have taken to validate that the proposed changes function as expected, and that existing functionality is not broken by the proposed changes.
 >
 > This can include manual testing with proof of results, as well as detailing automated testing that was added or modified.
+
+### Screenshots
+
+> Include screenshots to back up the results of the testing detailed above
+
+## Was the relevant documentation updated?
+
+> Is there any documentation that requires updates along with these changes?
