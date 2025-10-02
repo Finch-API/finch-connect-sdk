@@ -17,6 +17,7 @@ npm install @tryfinch/react-connect
 ### JavaScript
 
 Available via CDN:
+> Note: Since Finch Connect is an iFrame that requires interactivity, the HTML page that is loading the SDK **must be served from a server**. If the page is hosted statically Finch Connect will not work properly.
 
 ```html
 <script src="https://prod-cdn.tryfinch.com/latest/connect.js"></script>
