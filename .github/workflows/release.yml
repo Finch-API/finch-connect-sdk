@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Configure node
-        uses: useblacksmith/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Configure node
-        uses: useblacksmith/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -82,7 +82,7 @@ jobs:
           token: ${{ secrets.REPO_PAT_WRITE }}
 
       - name: Configure node
-        uses: useblacksmith/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
