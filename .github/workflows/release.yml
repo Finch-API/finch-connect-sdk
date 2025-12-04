@@ -23,10 +23,10 @@ jobs:
     runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Configure node
-        uses: useblacksmith/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -43,10 +43,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Configure node
-        uses: useblacksmith/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -76,13 +76,13 @@ jobs:
           aws-region: us-west-2
 
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           token: ${{ secrets.REPO_PAT_WRITE }}
 
       - name: Configure node
-        uses: useblacksmith/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
