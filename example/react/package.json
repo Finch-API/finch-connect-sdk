@@ -5,11 +5,11 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@tryfinch/react-connect": "file:../..",
-    "@types/react": "^17.0.37",
+    "@tryfinch/react-connect": "latest",
+    "@types/react": "^19.0.0",
     "prop-types": "^15.6.2",
-    "react": "file:../../node_modules/react",
-    "react-dom": "^16.9.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "scripts": {
     "start": "react-scripts start"
