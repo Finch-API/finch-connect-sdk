@@ -35,6 +35,7 @@ export const useFinchConnect = (
         coreRef.current.destroy();
       }
       isUseFinchConnectInitialized = false;
+      isHookMounted.current = false;
     };
   }, []);
 
