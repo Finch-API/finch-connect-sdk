@@ -1,6 +1,6 @@
 {
   "name": "@tryfinch/react-connect",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "The SDK for Finch's authorization flow, Finch Connect",
   "keywords": [
     "finch",

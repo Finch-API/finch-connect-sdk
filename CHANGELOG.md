@@ -1,3 +1,8 @@
+# v5.0.1
+
+## Fixed
+- Fixed an issue where callbacks were not fired when using React 18+ with StrictMode enabled
+
 # v5.0.0
 
 ## New
