@@ -31,6 +31,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
+      - name: Pin npm version
+        run: npm install -g npm@11.12.1
       - name: Install dependencies
         run: npm install
 
@@ -51,6 +53,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
+      - name: Pin npm version
+        run: npm install -g npm@11.12.1
       - name: Install dependencies
         run: npm install
 
@@ -88,6 +92,8 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org/
 
+      - name: Pin npm version
+        run: npm install -g npm@11.12.1
       - name: Install dependencies
         run: npm install
 
