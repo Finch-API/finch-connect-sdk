@@ -71,12 +71,15 @@ const App = () => {
   // Generate a session ID using the /connect/sessions endpoint on the Finch API
   // See the docs here https://developer.tryfinch.com/api-reference/connect/new-session#create-a-new-connect-session
   const sessionId = '';
+  // An optional state parameter can be passed
+  // https://datatracker.ietf.org/doc/html/rfc6749#section-10.12
+  const state = '';
 
   return (
     <div>
       <header>
         <p>Code: {code}</p>
-        <button type="button" onClick={() => open({ sessionId })}>
+        <button type="button" onClick={() => open({ sessionId, state })}>
           Open Finch Connect
         </button>
       </header>
@@ -127,10 +130,13 @@ const App = () => {
       // Generate a session ID using the /connect/sessions endpoint on the Finch API
       // See the docs here https://developer.tryfinch.com/api-reference/connect/new-session#create-a-new-connect-session
       const sessionId = '';
+      // An optional state parameter can be passed
+      // https://datatracker.ietf.org/doc/html/rfc6749#section-10.12
+      const state = '';
 
       const button = document.getElementById('connect-button');
       button.addEventListener('click', () => {
-        connect.open({ sessionId });
+        connect.open({ sessionId, state });
       });
     </script>
   </body>
