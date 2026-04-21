@@ -32,9 +32,6 @@ const App = () => {
       // An optional state parameter can be passed
       // https://datatracker.ietf.org/doc/html/rfc6749#section-10.12
       ...(sendState ? { state: new Date().toISOString() } : {}),
-      // An optional value for the z-index of the Finch Connect iframe
-      // Defaults to 999 if not provided
-      // zIndex: 998,
     });
   };
 

@@ -79,9 +79,9 @@
       const resultDisplay = document.getElementById('result-display');
 
       const connect = FinchConnect.initialize({
-        onSuccess: ({ code }) => {
+        onSuccess: ({ code, state }) => {
           console.log(`Success with code: ${code}`);
-          resultDisplay.innerHTML = `<strong>Success:</strong> ${code}`;
+          resultDisplay.innerHTML = `<strong>Code:</strong> ${code}<br><strong>State: ${state}</strong>`;
           resultDisplay.style.display = 'block';
         },
         onError: ({ errorMessage }) => {
@@ -112,9 +112,6 @@
           ...(includeStateCheckbox.checked
             ? { state: new Date().toISOString() }
             : {}),
-          // An optional value for the z-index of the Finch Connect iframe
-          // Defaults to 999 if not provided
-          // zIndex: 998,
         };
 
         connect.open(openOptions);
