@@ -105,18 +105,8 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # devEngines.packageManager blocks every npm invocation, and pnpm delegates both
-      # `version` and `pkg` to npm, so the version field is written directly here.
       - name: Update package version
-        env:
-          RELEASE_TAG: ${{ github.ref_name }}
-        run: |
-          node -e '
-            const fs = require("fs");
-            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
-            pkg.version = process.env.RELEASE_TAG.replace(/^v/, "");
-            fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
-          '
+        run: npm version --no-git-tag-version --allow-same-version ${{ github.ref_name }}
 
       - name: Commit version bump to main
         run: |
@@ -129,7 +119,7 @@ jobs:
           git push origin main
 
       - name: Publish React package to npm
-        run: pnpm publish --no-git-checks
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

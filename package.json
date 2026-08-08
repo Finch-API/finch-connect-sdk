@@ -31,12 +31,6 @@
     "dist"
   ],
   "packageManager": "pnpm@11.9.0",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "onFail": "error"
-    }
-  },
   "engines": {
     "node": ">=14",
     "pnpm": ">=11.9.0"
