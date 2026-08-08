@@ -52,10 +52,20 @@ jobs:
       - validate-pr-title-standard
 
     steps:
-      - name: Setup Node
-        uses: finch-api/github-actions/finch-setup-node@main
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # pnpm comes from the public action rather than finch-api/github-actions/finch-setup-node,
+      # which a public repository cannot resolve. action-setup reads the pnpm version from
+      # packageManager, so it runs after checkout and before setup-node's pnpm cache.
+      - name: Install pnpm
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+
+      - name: Configure node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          package-manager: pnpm
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -71,10 +81,17 @@ jobs:
       - validate-pr-title-standard
 
     steps:
-      - name: Setup Node
-        uses: finch-api/github-actions/finch-setup-node@main
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+
+      - name: Configure node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          package-manager: pnpm
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
