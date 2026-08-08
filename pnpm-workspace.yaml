@@ -1,0 +1,16 @@
+# No `packages:` key: the apps under example/ are standalone packages with their own
+# pnpm-workspace.yaml and lockfile, deliberately not members of this workspace.
+nodeLinker: hoisted
+
+minimumReleaseAge: 10080
+
+minimumReleaseAgeExclude:
+  - '@finch-api/*'
+
+# Frozen installs materialize an already-vetted lockfile instead of re-checking every
+# entry against the cooldown. Resolution still enforces minimumReleaseAge.
+trustLockfile: true
+
+allowBuilds:
+  # napi-postinstall only checks that the prebuilt platform binary resolved.
+  unrs-resolver: true

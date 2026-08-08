@@ -30,8 +30,10 @@
   "files": [
     "dist"
   ],
+  "packageManager": "pnpm@11.9.0",
   "engines": {
-    "node": ">=14"
+    "node": ">=14",
+    "pnpm": ">=11.9.0"
   },
   "scripts": {
     "build": "rollup -c",
@@ -40,7 +42,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run build",
+    "prepare": "pnpm run build",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {

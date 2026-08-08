@@ -143,6 +143,19 @@ const App = () => {
 </html>
 ```
 
+## Development
+
+This repo uses [pnpm](https://pnpm.io/), pinned through corepack. Run `corepack enable` once, then:
+
+```bash
+pnpm install
+pnpm run build
+pnpm run test
+pnpm run lint
+```
+
+The example apps under `example` are standalone packages with their own lockfiles. Install and run each from its own directory.
+
 ## Contributing
 
 Pull requests in this repo are not routinely reviewed. Do not submit pull requests if you are having issues with Finch Connect. Instead please reach out to our support team at developers@tryfinch.com.

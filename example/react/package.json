@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "pnpm": ">=11.9.0"
+  },
   "dependencies": {
     "@tryfinch/react-connect": "latest",
     "@types/react": "^19.0.0",
