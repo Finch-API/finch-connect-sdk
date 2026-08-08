@@ -1,0 +1,16 @@
+# Required even though the settings duplicate the repo root's: without a pnpm-workspace.yaml
+# here, pnpm takes the repo root as the workspace root, finds this package is not a member,
+# and `pnpm install` reports "Already up to date" without creating node_modules.
+nodeLinker: hoisted
+
+minimumReleaseAge: 10080
+
+minimumReleaseAgeExclude:
+  - '@finch-api/*'
+
+trustLockfile: true
+
+allowBuilds:
+  # Both postinstalls print a funding notice and exit.
+  core-js: true
+  core-js-pure: true

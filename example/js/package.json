@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Example Express server for testing Finch Connect SDK CDN usage",
   "main": "server.js",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "pnpm": ">=11.9.0"
+  },
   "scripts": {
     "start": "node server.js"
   },
