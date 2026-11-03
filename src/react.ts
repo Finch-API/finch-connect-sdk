@@ -13,6 +13,12 @@ export const useFinchConnect = (
   const coreRef = useRef<ReturnType<typeof createFinchConnectCore> | null>(
     null
   );
+  // The core is created once, so it calls the callbacks through this ref to
+  // always reach the ones passed on the latest render, not the first.
+  const argsRef = useRef(initializeArgs);
+  useEffect(() => {
+    argsRef.current = initializeArgs;
+  });
 
   useEffect(() => {
     if (!isHookMounted.current) {
@@ -25,7 +31,12 @@ export const useFinchConnect = (
       }
 
       isHookMounted.current = true;
-      coreRef.current = createFinchConnectCore(initializeArgs);
+      coreRef.current = createFinchConnectCore({
+        onSuccess: (e) => argsRef.current.onSuccess(e),
+        onError: (e) => argsRef.current.onError(e),
+        onClose: () => argsRef.current.onClose(),
+        apiConfig: initializeArgs.apiConfig,
+      });
     }
   }, []);
 
