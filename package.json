@@ -34,11 +34,11 @@
     "node": ">=14"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && tsc --emitDeclarationOnly",
     "dev": "rollup -c -w",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint": "biome lint src && prettier --check src",
     "typecheck": "tsc --noEmit",
     "prepare": "npm run build",
     "clean": "rm -rf dist"
@@ -52,24 +52,20 @@
     }
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.8",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^5.0.0",
-    "@rollup/plugin-typescript": "^11.1.0",
+    "@rollup/plugin-swc": "^0.4.1",
+    "@swc/core": "^1.16.22",
+    "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/react": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
     "jest": "^30.0.0",
     "jest-environment-jsdom": "^30.0.0",
     "prettier": "^3.0.0",
     "react": "^16.9.0",
     "rollup": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "ts-jest": "^29.0.0",
-    "tslib": "^2.6.0",
     "typescript": "^5.0.0"
   }
 }
