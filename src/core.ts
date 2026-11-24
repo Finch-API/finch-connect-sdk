@@ -54,7 +54,7 @@ export const createMessageHandler = (
   callbacks: ConnectInitializeArgs,
   closeFn: () => void
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: window message events carry untyped data
   return (event: MessageEvent<any>) => {
     const typedEvent = event as FinchConnectPostMessage;
 

@@ -1,0 +1,400 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.6.8/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "formatter": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "none",
+      "a11y": {
+        "noAccessKey": "error",
+        "noAriaUnsupportedElements": "error",
+        "noAutofocus": "error",
+        "noDistractingElements": "error",
+        "noHeaderScope": "error",
+        "noInteractiveElementToNoninteractiveRole": "error",
+        "noLabelWithoutControl": "error",
+        "noNoninteractiveElementInteractions": "error",
+        "noNoninteractiveElementToInteractiveRole": "error",
+        "noNoninteractiveTabindex": "error",
+        "noPositiveTabindex": "error",
+        "noRedundantAlt": "error",
+        "noRedundantRoles": "error",
+        "noStaticElementInteractions": "error",
+        "useAltText": "error",
+        "useAnchorContent": "error",
+        "useAriaActivedescendantWithTabindex": "error",
+        "useAriaPropsForRole": "error",
+        "useAriaPropsSupportedByRole": "error",
+        "useButtonType": "error",
+        "useFocusableInteractive": "error",
+        "useHeadingContent": "error",
+        "useHtmlLang": "error",
+        "useIframeTitle": "error",
+        "useKeyWithClickEvents": "error",
+        "useKeyWithMouseEvents": "error",
+        "useMediaCaption": "error",
+        "useValidAnchor": "off",
+        "useValidAriaProps": "error",
+        "useValidAriaRole": {
+          "level": "error",
+          "options": {
+            "ignoreNonDom": false
+          }
+        },
+        "useValidAriaValues": "error",
+        "useValidAutocomplete": "off",
+        "useValidLang": "error"
+      },
+      "complexity": {
+        "noAdjacentSpacesInRegex": "error",
+        "noArguments": "error",
+        "noBannedTypes": "error",
+        "noCommaOperator": "error",
+        "noDivRegex": "off",
+        "noExcessiveNestedCallbacks": {
+          "level": "off",
+          "options": {
+            "max": 10
+          }
+        },
+        "noExtraBooleanCast": "error",
+        "noImplicitCoercions": "off",
+        "noUselessCatch": "error",
+        "noUselessConstructor": "error",
+        "noUselessEscapeInRegex": "error",
+        "noUselessFragments": "error",
+        "noUselessLabel": "error",
+        "noUselessLoneBlockStatements": "error",
+        "noUselessRename": "error",
+        "noUselessReturn": "error",
+        "noUselessStringConcat": "error",
+        "noUselessTernary": "error",
+        "noUselessThisAlias": "error",
+        "noUselessTypeConstraint": "error",
+        "noUselessUndefinedInitialization": "error",
+        "noVoid": "error",
+        "useLiteralKeys": "error",
+        "useMaxParams": "off",
+        "useNumericLiterals": "error",
+        "useRegexLiterals": "error"
+      },
+      "correctness": {
+        "noChildrenProp": "error",
+        "noConstAssign": "error",
+        "noConstantCondition": "warn",
+        "noConstructorReturn": "error",
+        "noEmptyCharacterClassInRegex": "error",
+        "noEmptyPattern": "error",
+        "noGlobalObjectCalls": "error",
+        "noInnerDeclarations": "error",
+        "noInvalidConstructorSuper": "error",
+        "noInvalidUseBeforeDeclaration": "error",
+        "noNodejsModules": "off",
+        "noNonoctalDecimalEscape": "error",
+        "noPrecisionLoss": "error",
+        "noRenderReturnValue": "error",
+        "noRestrictedElements": "off",
+        "noSelfAssign": "error",
+        "noSetterReturn": "error",
+        "noSwitchDeclarations": "error",
+        "noUndeclaredDependencies": "error",
+        "noUndeclaredVariables": "error",
+        "noUnreachable": "error",
+        "noUnreachableSuper": "error",
+        "noUnresolvedImports": "error",
+        "noUnsafeFinally": "error",
+        "noUnsafeOptionalChaining": "error",
+        "noUnusedInstantiation": "error",
+        "noUnusedLabels": "error",
+        "noUnusedVariables": {
+          "level": "error",
+          "options": {
+            "ignoreRestSiblings": false,
+            "ignoreUsingDeclarations": false
+          }
+        },
+        "noVoidElementsWithChildren": "error",
+        "useIsNan": "error",
+        "useJsxKeyInIterable": "off",
+        "useParseIntRadix": "error",
+        "useValidForDirection": "error",
+        "useValidTypeof": "error",
+        "useYield": "error"
+      },
+      "performance": {
+        "noAwaitInLoops": "error",
+        "noDelete": "error"
+      },
+      "security": {
+        "noBlankTarget": "error",
+        "noDangerouslySetInnerHtml": "warn",
+        "noDangerouslySetInnerHtmlWithChildren": "error",
+        "noGlobalEval": "error",
+        "noScriptUrl": "error"
+      },
+      "style": {
+        "noCommonJs": "error",
+        "noContinue": "error",
+        "noDefaultExport": "off",
+        "noExcessiveClassesPerFile": "error",
+        "noIncrementDecrement": "error",
+        "noJsxLiterals": "off",
+        "noMultiAssign": "error",
+        "noMultilineString": "error",
+        "noNamespace": "error",
+        "noNegationElse": "off",
+        "noNestedTernary": "error",
+        "noParameterAssign": "error",
+        "noProcessEnv": "off",
+        "noRestrictedGlobals": {
+          "level": "error",
+          "options": {
+            "deniedGlobals": {
+              "defaultStatus": "Confusing browser global. Reference it through window instead.",
+              "status": "Confusing browser global. Reference it through window instead.",
+              "scroll": "Confusing browser global. Reference it through window instead.",
+              "outerHeight": "Confusing browser global. Reference it through window instead.",
+              "screenX": "Confusing browser global. Reference it through window instead.",
+              "opener": "Confusing browser global. Reference it through window instead.",
+              "onfocus": "Confusing browser global. Reference it through window instead.",
+              "pageYOffset": "Confusing browser global. Reference it through window instead.",
+              "addEventListener": "Confusing browser global. Reference it through window instead.",
+              "defaultstatus": "Confusing browser global. Reference it through window instead.",
+              "history": "Confusing browser global. Reference it through window instead.",
+              "frames": "Confusing browser global. Reference it through window instead.",
+              "screenY": "Confusing browser global. Reference it through window instead.",
+              "focus": "Confusing browser global. Reference it through window instead.",
+              "outerWidth": "Confusing browser global. Reference it through window instead.",
+              "opera": "Confusing browser global. Reference it through window instead.",
+              "external": "Confusing browser global. Reference it through window instead.",
+              "innerHeight": "Confusing browser global. Reference it through window instead.",
+              "closed": "Confusing browser global. Reference it through window instead.",
+              "isFinite": "Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite",
+              "frameElement": "Confusing browser global. Reference it through window instead.",
+              "scrollY": "Confusing browser global. Reference it through window instead.",
+              "self": "Confusing browser global. Reference it through window instead.",
+              "onblur": "Confusing browser global. Reference it through window instead.",
+              "find": "Confusing browser global. Reference it through window instead.",
+              "parent": "Confusing browser global. Reference it through window instead.",
+              "top": "Confusing browser global. Reference it through window instead.",
+              "moveBy": "Confusing browser global. Reference it through window instead.",
+              "menubar": "Confusing browser global. Reference it through window instead.",
+              "length": "Confusing browser global. Reference it through window instead.",
+              "onerror": "Confusing browser global. Reference it through window instead.",
+              "onresize": "Confusing browser global. Reference it through window instead.",
+              "removeEventListener": "Confusing browser global. Reference it through window instead.",
+              "onload": "Confusing browser global. Reference it through window instead.",
+              "scrollTo": "Confusing browser global. Reference it through window instead.",
+              "moveTo": "Confusing browser global. Reference it through window instead.",
+              "scrollX": "Confusing browser global. Reference it through window instead.",
+              "name": "Confusing browser global. Reference it through window instead.",
+              "toolbar": "Confusing browser global. Reference it through window instead.",
+              "innerWidth": "Confusing browser global. Reference it through window instead.",
+              "location": "Confusing browser global. Reference it through window instead.",
+              "locationbar": "Confusing browser global. Reference it through window instead.",
+              "scrollBy": "Confusing browser global. Reference it through window instead.",
+              "resizeTo": "Confusing browser global. Reference it through window instead.",
+              "stop": "Confusing browser global. Reference it through window instead.",
+              "scrollbars": "Confusing browser global. Reference it through window instead.",
+              "blur": "Confusing browser global. Reference it through window instead.",
+              "screenTop": "Confusing browser global. Reference it through window instead.",
+              "confirm": "Confusing browser global. Reference it through window instead.",
+              "screen": "Confusing browser global. Reference it through window instead.",
+              "screenLeft": "Confusing browser global. Reference it through window instead.",
+              "event": "Confusing browser global. Reference it through window instead.",
+              "onunload": "Confusing browser global. Reference it through window instead.",
+              "pageXOffset": "Confusing browser global. Reference it through window instead.",
+              "resizeBy": "Confusing browser global. Reference it through window instead.",
+              "statusbar": "Confusing browser global. Reference it through window instead.",
+              "isNaN": "Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan",
+              "close": "Confusing browser global. Reference it through window instead.",
+              "open": "Confusing browser global. Reference it through window instead.",
+              "print": "Confusing browser global. Reference it through window instead."
+            }
+          }
+        },
+        "noRestrictedImports": "off",
+        "noTernary": "off",
+        "noUselessElse": "error",
+        "noYodaExpression": "error",
+        "useArrayLiterals": "error",
+        "useAsConstAssertion": "error",
+        "useBlockStatements": "off",
+        "useCollapsedElseIf": "error",
+        "useConsistentArrowReturn": "off",
+        "useConsistentBuiltinInstantiation": "error",
+        "useConsistentCurlyBraces": "error",
+        "useConsistentObjectDefinitions": "error",
+        "useConst": "error",
+        "useDefaultParameterLast": "error",
+        "useDefaultSwitchClause": "error",
+        "useExponentiationOperator": "error",
+        "useExportsLast": "off",
+        "useFragmentSyntax": "error",
+        "useGroupedAccessorPairs": "error",
+        "useImportsFirst": "error",
+        "useNamedCaptureGroup": "off",
+        "useObjectSpread": "error",
+        "useSelfClosingElements": "error",
+        "useShorthandAssign": "error",
+        "useSingleVarDeclarator": "error",
+        "useSpreadOverApply": "error",
+        "useSymbolDescription": "error",
+        "useTemplate": "error",
+        "useThisInClassMethods": {
+          "level": "error",
+          "options": {
+            "ignoreMethods": [
+              "render",
+              "getInitialState",
+              "getDefaultProps",
+              "getChildContext",
+              "componentWillMount",
+              "UNSAFE_componentWillMount",
+              "componentDidMount",
+              "componentWillReceiveProps",
+              "UNSAFE_componentWillReceiveProps",
+              "shouldComponentUpdate",
+              "componentWillUpdate",
+              "UNSAFE_componentWillUpdate",
+              "componentDidUpdate",
+              "componentWillUnmount",
+              "componentDidCatch",
+              "getSnapshotBeforeUpdate"
+            ]
+          }
+        },
+        "useThrowOnlyError": "error",
+        "useUnicodeRegex": "off",
+        "useVarsOnTop": "error"
+      },
+      "suspicious": {
+        "noAlert": "warn",
+        "noArrayIndexKey": "error",
+        "noAssignInExpressions": "error",
+        "noAsyncPromiseExecutor": "error",
+        "noBitwiseOperators": "error",
+        "noCatchAssign": "error",
+        "noClassAssign": "error",
+        "noCommentText": "error",
+        "noCompareNegZero": "error",
+        "noConfusingLabels": "error",
+        "noConsole": "off",
+        "noControlCharactersInRegex": "error",
+        "noDebugger": "error",
+        "noDoubleEquals": {
+          "level": "error",
+          "options": {
+            "ignoreNull": true
+          }
+        },
+        "noDuplicateCase": "error",
+        "noDuplicateClassMembers": "error",
+        "noDuplicateElseIf": "error",
+        "noDuplicateEnumValues": "error",
+        "noDuplicateJsxProps": "error",
+        "noDuplicateObjectKeys": "error",
+        "noDuplicateParameters": "error",
+        "noEmptyBlockStatements": "error",
+        "noEqualsToNull": "off",
+        "noExplicitAny": "error",
+        "noExtraNonNullAssertion": "error",
+        "noFallthroughSwitchClause": "error",
+        "noFunctionAssign": "error",
+        "noGlobalAssign": "error",
+        "noImportAssign": "error",
+        "noImportCycles": "error",
+        "noIrregularWhitespace": "error",
+        "noLabelVar": "error",
+        "noLoopFunc": "error",
+        "noMisleadingCharacterClass": "error",
+        "noMisleadingInstantiator": "error",
+        "noNonNullAssertedOptionalChain": "error",
+        "noOctalEscape": "error",
+        "noProto": "error",
+        "noPrototypeBuiltins": "error",
+        "noReactStringRefs": "error",
+        "noRedeclare": "error",
+        "noReturnAssign": "error",
+        "noSelfCompare": "error",
+        "noShadow": "error",
+        "noShadowRestrictedNames": "error",
+        "noSparseArray": "error",
+        "noTemplateCurlyInString": "error",
+        "noTsIgnore": "error",
+        "noUnknownAttribute": "error",
+        "noUnsafeDeclarationMerging": "error",
+        "noUnsafeNegation": "error",
+        "noUnusedExpressions": "error",
+        "noUselessRegexBackrefs": "error",
+        "noVar": "error",
+        "noWith": "error",
+        "useAwait": "off",
+        "useDefaultSwitchClauseLast": "error",
+        "useGetterReturn": "error",
+        "useGuardForIn": "error",
+        "useIterableCallbackReturn": {
+          "level": "error",
+          "options": {
+            "allowImplicit": true
+          }
+        }
+      }
+    },
+    "includes": [
+      "**",
+      "!**/rollup.config.js"
+    ]
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mts",
+        "**/*.cts"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noArguments": "error"
+          },
+          "correctness": {
+            "noConstAssign": "off",
+            "noGlobalObjectCalls": "off",
+            "noInvalidConstructorSuper": "off",
+            "noSetterReturn": "off",
+            "noUndeclaredVariables": "off",
+            "noUnreachable": "off",
+            "noUnreachableSuper": "off"
+          },
+          "style": {
+            "useConst": "error",
+            "useSpreadOverApply": "error"
+          },
+          "suspicious": {
+            "noDuplicateClassMembers": "off",
+            "noDuplicateObjectKeys": "off",
+            "noDuplicateParameters": "off",
+            "noFunctionAssign": "off",
+            "noImportAssign": "off",
+            "noRedeclare": "off",
+            "noUnsafeNegation": "off",
+            "noVar": "error",
+            "useGetterReturn": "off"
+          }
+        }
+      }
+    }
+  ],
+  "assist": {
+    "enabled": false
+  }
+}

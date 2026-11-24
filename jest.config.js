@@ -1,10 +1,12 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.ts?$': [
+      '@swc/jest',
+      { jsc: { target: 'es2018', parser: { syntax: 'typescript' } } },
+    ],
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',

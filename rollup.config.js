@@ -1,4 +1,5 @@
-const typescript = require('@rollup/plugin-typescript');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const swc = require('@rollup/plugin-swc');
 const replace = require('@rollup/plugin-replace');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 
@@ -19,16 +20,8 @@ module.exports = [
     },
     plugins: [
       peerDepsExternal(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: false,
-        exclude: [
-          '**/*.test.ts',
-          '**/*.test.tsx',
-          'src/react.ts',
-          'src/setupTests.ts',
-        ],
-      }),
+      nodeResolve({ extensions: ['.ts', '.js'] }),
+      swc({ swc: { jsc: { target: 'es2018' } } }),
       replace({
         preventAssignment: true,
         SDK_VERSION: `unified-${packageJson.version}`,
@@ -45,12 +38,8 @@ module.exports = [
     external: ['react'],
     plugins: [
       peerDepsExternal(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: 'dist',
-        exclude: ['**/*.test.ts', '**/*.test.tsx', 'src/setupTests.ts'],
-      }),
+      nodeResolve({ extensions: ['.ts', '.js'] }),
+      swc({ swc: { jsc: { target: 'es2018' } } }),
       replace({
         preventAssignment: true,
         SDK_VERSION: `unified-${packageJson.version}`,
@@ -67,12 +56,8 @@ module.exports = [
     external: ['react'],
     plugins: [
       peerDepsExternal(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: 'dist',
-        exclude: ['**/*.test.ts', '**/*.test.tsx', 'src/index.ts'],
-      }),
+      nodeResolve({ extensions: ['.ts', '.js'] }),
+      swc({ swc: { jsc: { target: 'es2018' } } }),
       replace({
         preventAssignment: true,
         SDK_VERSION: `unified-${packageJson.version}`,
